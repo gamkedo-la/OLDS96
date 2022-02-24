@@ -16,6 +16,8 @@ public class CrossFinishLine : MonoBehaviour
     private bool istriggered = false; 
  
     private void OnTriggerEnter(Collider collider){
+        //Debug.Log("OnTriggerEnter has fired");
+        //Debug.Log(istriggered);
         if  (istriggered == false) {
             if(collider.gameObject.tag == "Player"){
                 lapCount++;
