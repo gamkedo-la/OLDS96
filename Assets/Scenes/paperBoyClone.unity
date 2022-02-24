@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 1171344487}
   - component: {fileID: 1171344486}
   m_Layer: 0
-  m_Name: FinishLine
+  m_Name: FinishLineTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1090,7 +1090,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171344485}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1141,7 +1141,7 @@ Transform:
   m_GameObject: {fileID: 1171344485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -62.2, y: -1.27, z: 312.13}
-  m_LocalScale: {x: 50, y: 1, z: 20}
+  m_LocalScale: {x: 50, y: 1, z: 11.332869}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1695,7 +1695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4861103980802356226, guid: a99d9f92c97c840d9a578668c55e3822, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 293.74
+      value: 300.5
       objectReference: {fileID: 0}
     - target: {fileID: 4861103980802356226, guid: a99d9f92c97c840d9a578668c55e3822, type: 3}
       propertyPath: m_LocalRotation.w
