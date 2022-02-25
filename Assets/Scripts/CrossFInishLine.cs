@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CrossFinishLine : MonoBehaviour
 {
 
+    public Text lapCountDisplay;
     private int lapCount = 0;
 
     // Start is called before the first frame update
@@ -21,6 +23,7 @@ public class CrossFinishLine : MonoBehaviour
         if  (istriggered == false) {
             if(collider.gameObject.tag == "Player"){
                 lapCount++;
+                lapCountDisplay.text = lapCount.ToString();
                 Debug.Log(lapCount);
                 if(lapCount == 3){
                     Debug.Log("u win~" + collider.gameObject.tag);
