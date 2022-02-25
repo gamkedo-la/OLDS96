@@ -7,6 +7,7 @@ public class CrossFinishLine : MonoBehaviour
 {
 
     public Text lapCountDisplay;
+    public TimerClass timerScript;
     private int lapCount = 0;
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class CrossFinishLine : MonoBehaviour
         if  (istriggered == false) {
             if(collider.gameObject.tag == "Player"){
                 lapCount++;
+                //timerScript.timeRemaining += 200;
                 lapCountDisplay.text = lapCount.ToString();
                 Debug.Log(lapCount);
                 if(lapCount == 3){
