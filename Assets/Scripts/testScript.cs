@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CrossFinishLine : MonoBehaviour
+public class testScript : MonoBehaviour
 {
+
     public Text lapCountDisplay;
     private int lapCount = 0;
     //private TimerClass timerScript = GetComponent<TimerClass>();
