@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class TimeBonus : MonoBehaviour
 {
-    private bool istriggered = false; 
+    private bool isTriggered = false; 
 
     private void OnTriggerEnter(Collider collider)
     {
+        if(isTriggered){
+            return;
+        }
         if(collider.gameObject.tag == "Player"){
             //timerScript.timeRemaining += 200;
             //Debug.Log('time bonus!');
             Debug.Log("time bonus!");
+            isTriggered = true;   
         }
-        istriggered = true;    
+ 
     }
     
     void OnTriggerExit( Collider coll)
     {
-        istriggered  = false;
+        if(coll.gameObject.tag == "Player"){
+            isTriggered  = false;
+        }
     }
 }
