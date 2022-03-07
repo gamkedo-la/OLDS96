@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class TimerClass : MonoBehaviour
 {
-
+    public static TimerClass instance;
     public Text timerDisplay;
     public float timeRemaining = 10;
     public bool timerIsRunning = false;
     
-
     private void Start()
     {
         // Starts the timer automatically
@@ -40,5 +39,9 @@ public class TimerClass : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timerDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void addTime(){
+        timeRemaining += 400;
     }
 }

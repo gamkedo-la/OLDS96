@@ -14,19 +14,19 @@ public class FinishLine : MonoBehaviour
     private bool isTriggered = false; 
  
     private void OnTriggerEnter(Collider collider){
-        //Debug.Log("OnTriggerEnter has fired");
-        //Debug.Log(istriggered);
-        if  (isTriggered == false) {
-            if(collider.gameObject.tag == "Player"){
-                LapCounter.instance.addLap(); //script.instance.method
-            }
-            // do your things here that has to happen once
+        if(isTriggered){
+            return;
+        }
+        if(collider.gameObject.tag == "Player"){
+            LapCounter.instance.addLap(); //script.instance.method
+            //TimerClass.instance.addTime();
             isTriggered = true;
         }        
     }
     
-    void OnTriggerExit( Collider coll)
-    {
-        isTriggered  = false;
+    void OnTriggerExit( Collider coll){
+        if(coll.gameObject.tag == "Player"){
+            isTriggered  = false;
+        }
     }
 }
