@@ -19,7 +19,9 @@ public class FinishLine : MonoBehaviour
         }
         if(collider.gameObject.tag == "Player"){
             LapCounter.instance.addLap(); //script.instance.method
-            //TimerClass.instance.addTime();
+            //TimerClass.instance.addTime(); //currently breaks build
+            //Debug.Log(TimerClass.instance);
+            //Debug.Log(LapCounter.instance);
             isTriggered = true;
         }        
     }
