@@ -17,7 +17,6 @@ public class CarDrive : MonoBehaviour
     void Start()
     {
      rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
-     //Debug.Log("car object started script");   
      RestartAtSpawn();
     }
 
@@ -32,19 +31,7 @@ public class CarDrive : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space)){
             spacebarWillCallFunctionOn.TestFunctionality();
-
         }
-        /*
-        if(Input.GetKey(KeyCode.UpArrow)){
-            transform.position += transform.forward * Time.deltaTime * 3.0f;
-        }
-        if(Input.GetKey(KeyCode.LeftArrow)){
-            transform.Rotate(Vector3.up, 30.0f * Time.deltaTime);
-        }
-        */
-
-        //transform.position += transform.forward * Time.deltaTime * driveSpeed * Input.GetAxisRaw("Vertical");
-        
         transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
 
     }
