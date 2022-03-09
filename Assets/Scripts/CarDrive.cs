@@ -5,6 +5,9 @@ using UnityEngine;
 public class CarDrive : MonoBehaviour
 {
 
+    //private float velocity = 10.0;
+    //private float acceleration = 10.0; //might be driveSpeed, nah better replaced iwth accel
+
     public float driveSpeed = 8.0f;
     public float turnRate = 10.0f;
     public Transform restartAt;
@@ -37,11 +40,22 @@ public class CarDrive : MonoBehaviour
     }
 
     void FixedUpdate(){
+
+        /*
+        //this line adds the acceleration value to the power value over the course of 1 second, up to infinity
+        power = power + (Time.deltaTime * acceleration);
+        //this line feeds the ever-growing force to the object, propelling it faster and faster over time
+        transform.Translate(0, 0, power); //this is applied to the translate, not what we want, i think you want the rb
+        */
+
+        //float power = power + (Time.deltaTime * acceleration);
+
         rb.angularVelocity = Vector3.zero; //stop spinning out of control?
         rb.velocity *= 0.8f;
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
         rb.velocity += flatForward * driveSpeed * Input.GetAxisRaw("Vertical"); //vel ALREADY takes place over time
+        //rb.velocity += flatForward * power * Input.GetAxisRaw("Vertical"); //vel ALREADY takes place over time
         //Debug.Log(rb.velocity);
     }
 }
