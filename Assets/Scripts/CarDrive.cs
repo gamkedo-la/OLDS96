@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class CarDrive : MonoBehaviour
 {
+    private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
+    private float finalVelocity = 500.0f; //added each sec while accelerating    
 
-    private float acceleration = 10.0f; //might be driveSpeed, nah better replaced iwth accel
-    private float power;
+    private float accelerationRate = 100.0f; //added each sec while accelerating
+    private float decelerationRate = 50.0f; //added each sec while accelerating
 
-    public float driveSpeed = 8.0f;
+    private float power = 0.0f; //the power applied to the car
+    private float currentVelocity = 0.0f; //self-explanatory
+
+    //private float power; //don't think i need this anymore
+
     public float turnRate = 10.0f;
     public Transform restartAt;
 
@@ -32,23 +38,32 @@ public class CarDrive : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            spacebarWillCallFunctionOn.TestFunctionality();
-        }
         transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
-
     }
 
     void FixedUpdate(){
 
-        power = power + (Time.deltaTime * acceleration);
+        power = power + (Time.deltaTime * currentVelocity);
 
         rb.angularVelocity = Vector3.zero; //stop spinning out of control?
-        rb.velocity *= 0.8f;
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
-        //rb.velocity += flatForward * driveSpeed * Input.GetAxisRaw("Vertical"); //vel ALREADY takes place over time
+
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            //add to the current velocity according while accelerating
+            currentVelocity = currentVelocity + (accelerationRate * Time.deltaTime);
+        }
+        else
+        {
+            //subtract from the current velocity while decelerating
+            currentVelocity = currentVelocity - (decelerationRate * Time.deltaTime);
+        }
+
+        //ensure the velocity never goes out of the initial/final boundaries
+        currentVelocity = Mathf.Clamp(currentVelocity, initialVelocity, finalVelocity);
+        
         rb.velocity += flatForward * power * Input.GetAxisRaw("Vertical"); //vel ALREADY takes place over time
-        //Debug.Log(rb.velocity);
+
     }
 }
