@@ -14,6 +14,7 @@ public class TimerClass : MonoBehaviour
     {
         // Starts the timer automatically
         timerIsRunning = true;
+        instance = this;
     }
 
     void Update()
