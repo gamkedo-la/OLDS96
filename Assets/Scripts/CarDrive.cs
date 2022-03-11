@@ -5,9 +5,11 @@ using UnityEngine;
 public class CarDrive : MonoBehaviour
 {
     private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
-    private float finalVelocity = 500.0f; //added each sec while accelerating    
+    public float finalVelocity = 500.0f; //added each sec while accelerating    
 
-    private float accelerationRate = 200.0f; //added each sec while accelerating
+    public float driftPercent = 0.1f;
+
+    public float accelerationRate = 200.0f; //added each sec while accelerating
     private float decelerationRate = 50.0f; //added each sec while accelerating
 
     private float power = 0.0f; //the power applied to the car
@@ -44,13 +46,11 @@ public class CarDrive : MonoBehaviour
 
     void FixedUpdate(){
 
-        power = power + (Time.deltaTime * currentVelocity);
-
         //rb.angularVelocity = Vector3.zero; //stop spinning out of control?
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
 
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetKey(KeyCode.UpArrow))
         {
             //add to the current velocity according while accelerating
             currentVelocity = currentVelocity + (accelerationRate * Time.deltaTime);
@@ -63,8 +63,18 @@ public class CarDrive : MonoBehaviour
 
         //ensure the velocity never goes out of the initial/final boundaries
         currentVelocity = Mathf.Clamp(currentVelocity, initialVelocity, finalVelocity);
-        
-        rb.velocity += flatForward * power * Input.GetAxisRaw("Vertical"); //vel ALREADY takes place over time
+
+        power = power + (Time.deltaTime * currentVelocity);        
+
+
+        if(Input.GetAxisRaw("Vertical") >= 0.0f) //not back
+        {
+            rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity; //vel ALREADY takes place over time
+        }
+        else
+        {
+            rb.velocity = flatForward * -40.0f;
+        }
 
     }
 }

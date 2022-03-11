@@ -1915,6 +1915,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2226773773706055132, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_Drag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773773706055132, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2226773773706055133, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 62.3
@@ -1924,9 +1932,37 @@ PrefabInstance:
       value: -33.6
       objectReference: {fileID: 0}
     - target: {fileID: 2226773773706055135, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: turnRate
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773773706055135, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: driftPercent
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773773706055135, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: finalVelocity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773773706055135, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: accelerationRate
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773773706055135, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: spacebarWillCallFunctionOn
       value: 
       objectReference: {fileID: 688974976}
+    - target: {fileID: 2226773774302565697, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773774463883673, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00864625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773774881873861, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9613538
+      objectReference: {fileID: 0}
     - target: {fileID: 2226773774900386300, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_Name
       value: EveryScenePrefabs
@@ -1974,6 +2010,30 @@ PrefabInstance:
     - target: {fileID: 2226773774900386303, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775525854463, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.96135664
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775565832517, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.0386462
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334844470026876871, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fb4d055259cb4c11a1ce00d52762984, type: 2}
+    - target: {fileID: 6742181815771978814, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5186462
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913154498483778466, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5186462
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956543505257889393, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.3586464
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
