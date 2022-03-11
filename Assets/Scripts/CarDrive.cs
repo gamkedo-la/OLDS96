@@ -7,7 +7,7 @@ public class CarDrive : MonoBehaviour
     private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
     private float finalVelocity = 500.0f; //added each sec while accelerating    
 
-    private float accelerationRate = 100.0f; //added each sec while accelerating
+    private float accelerationRate = 200.0f; //added each sec while accelerating
     private float decelerationRate = 50.0f; //added each sec while accelerating
 
     private float power = 0.0f; //the power applied to the car
@@ -39,13 +39,14 @@ public class CarDrive : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
+        //rb.angularVelocity += turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal");
     }
 
     void FixedUpdate(){
 
         power = power + (Time.deltaTime * currentVelocity);
 
-        rb.angularVelocity = Vector3.zero; //stop spinning out of control?
+        //rb.angularVelocity = Vector3.zero; //stop spinning out of control?
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
 
