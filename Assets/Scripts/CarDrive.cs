@@ -12,7 +12,7 @@ public class CarDrive : MonoBehaviour
     public float accelerationRate = 200.0f; //added each sec while accelerating
     private float decelerationRate = 50.0f; //added each sec while accelerating
 
-    private float power = 0.0f; //the power applied to the car
+    //private float power = 0.0f; //the power applied to the car
     private float currentVelocity = 0.0f; //self-explanatory
     private float currentBrake = 0.0f; //self-explanatory
 
@@ -47,15 +47,9 @@ public class CarDrive : MonoBehaviour
 
     void FixedUpdate(){
 
-        //rb.angularVelocity = Vector3.zero; //stop spinning out of control?
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
         Debug.Log(rb.velocity);
-
-        if(Input.GetKey(KeyCode.DownArrow)) //WIP breaking
-        {
-            currentBrake = currentBrake + (decelerationRate * Time.deltaTime);
-        }
 
         if(Input.GetKey(KeyCode.UpArrow))
         {
@@ -71,8 +65,7 @@ public class CarDrive : MonoBehaviour
         //ensure the velocity never goes out of the initial/final boundaries
         currentVelocity = Mathf.Clamp(currentVelocity, initialVelocity, finalVelocity);
 
-        power = power + (Time.deltaTime * currentVelocity);        
-
+        //power = power + (Time.deltaTime * currentVelocity);        
 
         if(Input.GetAxisRaw("Vertical") >= 0.0f) //not back
         {
