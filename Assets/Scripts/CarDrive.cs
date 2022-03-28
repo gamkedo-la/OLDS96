@@ -14,6 +14,7 @@ public class CarDrive : MonoBehaviour
 
     private float power = 0.0f; //the power applied to the car
     private float currentVelocity = 0.0f; //self-explanatory
+    private float currentBrake = 0.0f; //self-explanatory
 
     //private float power; //don't think i need this anymore
 
@@ -49,6 +50,12 @@ public class CarDrive : MonoBehaviour
         //rb.angularVelocity = Vector3.zero; //stop spinning out of control?
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
+        Debug.Log(rb.velocity);
+
+        if(Input.GetKey(KeyCode.DownArrow)) //WIP breaking
+        {
+            currentBrake = currentBrake + (decelerationRate * Time.deltaTime);
+        }
 
         if(Input.GetKey(KeyCode.UpArrow))
         {
@@ -73,7 +80,9 @@ public class CarDrive : MonoBehaviour
         }
         else
         {
-            rb.velocity = flatForward * -40.0f;
+            //rb.velocity = flatForward * -40.0f; //has the effect of immediately reversing the car
+            //rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity * currentBrake;
+            rb.velocity = rb.velocity* 0.9f;
         }
 
     }
