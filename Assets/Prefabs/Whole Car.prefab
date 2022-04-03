@@ -289,6 +289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157bbd85e01ac4beda245890ed81d047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finalVelocity: 500
+  driftPercent: 0.1
+  accelerationRate: 200
+  brakeDecayPercent: 0
   turnRate: 300
   restartAt: {fileID: 2067670497}
   spacebarWillCallFunctionOn: {fileID: 0}
@@ -637,7 +641,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
