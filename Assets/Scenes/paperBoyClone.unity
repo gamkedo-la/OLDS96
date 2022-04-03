@@ -2217,6 +2217,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2226773773706055135, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: brakeDecayPercent
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773773706055135, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: spacebarWillCallFunctionOn
       value: 
       objectReference: {fileID: 688974976}

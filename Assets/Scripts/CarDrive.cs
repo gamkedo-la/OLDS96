@@ -14,7 +14,7 @@ public class CarDrive : MonoBehaviour
 
     //private float power = 0.0f; //the power applied to the car
     private float currentVelocity = 0.0f; //self-explanatory
-    private float currentBrake = 0.0f; //self-explanatory
+    public float brakeDecayPercent = 0.0f; //self-explanatory
 
     //private float power; //don't think i need this anymore
 
@@ -67,16 +67,17 @@ public class CarDrive : MonoBehaviour
 
         //power = power + (Time.deltaTime * currentVelocity);        
 
-        if(Input.GetAxisRaw("Vertical") >= 0.0f) //not back
+        if(Input.GetAxisRaw("Vertical") > 0.0f) //forward
         {
             rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity; //vel ALREADY takes place over time
         }
-        else
+        else if((Input.GetAxisRaw("Vertical") < 0.0f)) //brake
         {
             //rb.velocity = flatForward * -40.0f; //has the effect of immediately reversing the car
             //rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity * currentBrake;
-            rb.velocity = rb.velocity * 0.993f;
+            rb.velocity = rb.velocity * brakeDecayPercent;
         }
+        // if above conditions aren't met, the vehicle will decelerate
 
     }
 }
