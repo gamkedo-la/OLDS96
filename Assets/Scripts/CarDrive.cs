@@ -75,7 +75,7 @@ public class CarDrive : MonoBehaviour
         {
             //rb.velocity = flatForward * -40.0f; //has the effect of immediately reversing the car
             //rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity * currentBrake;
-            rb.velocity = rb.velocity* 0.9f;
+            rb.velocity = rb.velocity * 0.993f;
         }
 
     }
