@@ -1727,6 +1727,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6152527819763957188, guid: 0f23754e7629f4afebc6be6df4aca4e5, type: 3}
+--- !u!1 &1542370300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542370301}
+  m_Layer: 3
+  m_Name: EnemyRespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1542370301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542370300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2743180048526654223}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587549423 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7938785564872541383, guid: 0f23754e7629f4afebc6be6df4aca4e5, type: 3}
@@ -2196,6 +2226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WP3
       objectReference: {fileID: 0}
+    - target: {fileID: 909608175272445277, guid: 663be67ca36db42df95498e517d784ee, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5803540816670028863, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: next
       value: 
@@ -2206,11 +2240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6379881994026629152, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.6
+      value: 9.7
       objectReference: {fileID: 0}
     - target: {fileID: 6379881994026629152, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 6379881994026629152, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2838,6 +2872,7 @@ Transform:
   - {fileID: 2743180047484725527}
   - {fileID: 2743180047914813997}
   - {fileID: 7423858705637934448}
+  - {fileID: 1542370301}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2851,6 +2886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2743180048526654223}
   - component: {fileID: 2743180048526654222}
+  - component: {fileID: 2743180048526654225}
   m_Layer: 3
   m_Name: EnemyCar
   m_TagString: Player
@@ -2858,6 +2894,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2743180048526654225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743180048526654224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591785fe315c74d2cb908190d974b062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalVelocity: 10
+  driftPercent: 0.1
+  accelerationRate: 200
+  brakeDecayPercent: 0
+  turnRate: 10
+  restartAt: {fileID: 1542370301}
+  wayPoint: {fileID: 2014595167}
+  spacebarWillCallFunctionOn: {fileID: 0}
 --- !u!33 &2743180048967806792
 MeshFilter:
   m_ObjectHideFlags: 0

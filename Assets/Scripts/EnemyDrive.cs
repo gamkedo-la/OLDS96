@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarDrive : MonoBehaviour
+public class EnemyDrive : MonoBehaviour
 {
     private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
     public float finalVelocity = 500.0f; //added each sec while accelerating    
@@ -20,10 +20,13 @@ public class CarDrive : MonoBehaviour
 
     public float turnRate = 10.0f;
     public Transform restartAt;
+    public Transform wayPoint;
 
     public DemoFunctionCallOnMe spacebarWillCallFunctionOn;
 
     private Rigidbody rb;//Rigidbody is one word, not camelcase
+
+    private bool cinderBlock = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +42,25 @@ public class CarDrive : MonoBehaviour
 
     // Update is called once per frame
 
+    protected float AngleAroundAxis (Vector3 dirA, Vector3 dirB, Vector3 axis) {
+		dirA = dirA - Vector3.Project(dirA, axis);
+		dirB = dirB - Vector3.Project(dirB, axis);
+		float angle = Vector3.Angle(dirA, dirB);
+		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
+
+        // for ref Vector3 pathToSteerToward = (safetyPoint - transform.position) + (nextWaypoint - transform.position);
+        // i think transform.position can be used as a vector, not sure, but let's find out
+	}
+
     void Update()
     {
-        transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
+
+        if(Input.GetKeyUp(KeyCode.Space)){
+            cinderBlock = !cinderBlock;
+        }
+        
+        //transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
+        //^ i think you would actually remove the input, and replace turnRate with whatever the turn function outputs
         //rb.angularVelocity += turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal");
     }
 
@@ -49,16 +68,14 @@ public class CarDrive : MonoBehaviour
 
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
-        //Debug.Log(rb.velocity);
+        float turnAmt = AngleAroundAxis(transform.forward, wayPoint.position - transform.position, Vector3.up);
 
-        if(Input.GetKey(KeyCode.UpArrow))
+        if(cinderBlock == true)
         {
-            //add to the current velocity according while accelerating
             currentVelocity = currentVelocity + (accelerationRate * Time.deltaTime);
         }
         else
         {
-            //subtract from the current velocity while decelerating
             currentVelocity = currentVelocity - (decelerationRate * Time.deltaTime);
         }
 
@@ -67,11 +84,12 @@ public class CarDrive : MonoBehaviour
 
         //power = power + (Time.deltaTime * currentVelocity);        
 
-        if(Input.GetAxisRaw("Vertical") > 0.0f) //forward
+        if(cinderBlock == true) //forward
         {
             rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity; //vel ALREADY takes place over time
+            transform.Rotate(Vector3.up, turnAmt * Time.deltaTime);
         }
-        else if((Input.GetAxisRaw("Vertical") < 0.0f)) //brake
+        else if((cinderBlock == false)) //brake
         {
             //rb.velocity = flatForward * -40.0f; //has the effect of immediately reversing the car
             //rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity * currentBrake;
