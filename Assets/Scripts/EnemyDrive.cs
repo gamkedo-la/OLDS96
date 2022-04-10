@@ -22,6 +22,8 @@ public class EnemyDrive : MonoBehaviour
     public Transform restartAt;
     public Transform wayPoint;
     public Transform wayPoint2;
+    //private Transform currentWayPoint = wayPoint; ask Chris why this throws an error
+    private Transform currentWayPoint;
 
     public DemoFunctionCallOnMe spacebarWillCallFunctionOn;
 
@@ -34,6 +36,7 @@ public class EnemyDrive : MonoBehaviour
     {
      rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
      RestartAtSpawn();
+     currentWayPoint = wayPoint;
     }
 
     public void RestartAtSpawn(){
@@ -70,9 +73,16 @@ public class EnemyDrive : MonoBehaviour
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
 
-        //Transform currentWayPoint = wayPoint;
+        float distTo = Vector3.Distance(transform.position, currentWayPoint.position);
+		float closeEnoughToWaypoint = 10.0f;
 
-        float turnAmt = AngleAroundAxis(transform.forward, wayPoint.position - transform.position, Vector3.up);
+		if(distTo < closeEnoughToWaypoint) {
+            //Debug.Log("close enough");
+            currentWayPoint = wayPoint2;
+            
+        }
+
+        float turnAmt = AngleAroundAxis(transform.forward, currentWayPoint.position - transform.position, Vector3.up);
 
 
         if(cinderBlock == true)

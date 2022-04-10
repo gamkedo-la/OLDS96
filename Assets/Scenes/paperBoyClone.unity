@@ -1642,6 +1642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WP2
       objectReference: {fileID: 0}
+    - target: {fileID: 909608175272445277, guid: 663be67ca36db42df95498e517d784ee, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5803540816670028863, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: next
       value: 
@@ -2240,7 +2244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6379881994026629152, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.7
+      value: -26.5
       objectReference: {fileID: 0}
     - target: {fileID: 6379881994026629152, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2912,7 +2916,8 @@ MonoBehaviour:
   brakeDecayPercent: 0
   turnRate: 10
   restartAt: {fileID: 1542370301}
-  wayPoint: {fileID: 2014595167}
+  wayPoint: {fileID: 7823991694790565938}
+  wayPoint2: {fileID: 2014595167}
   spacebarWillCallFunctionOn: {fileID: 0}
 --- !u!33 &2743180048967806792
 MeshFilter:
@@ -3358,6 +3363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WP1
       objectReference: {fileID: 0}
+    - target: {fileID: 909608175272445277, guid: 663be67ca36db42df95498e517d784ee, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5803540816670028863, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: next
       value: 
@@ -3372,7 +3381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6379881994026629152, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6379881994026629152, guid: 663be67ca36db42df95498e517d784ee, type: 3}
       propertyPath: m_LocalPosition.z
