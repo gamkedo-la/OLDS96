@@ -21,6 +21,7 @@ public class EnemyDrive : MonoBehaviour
     public float turnRate = 10.0f;
     public Transform restartAt;
     public Transform wayPoint;
+    public Transform wayPoint2;
 
     public DemoFunctionCallOnMe spacebarWillCallFunctionOn;
 
@@ -68,7 +69,11 @@ public class EnemyDrive : MonoBehaviour
 
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
+
+        //Transform currentWayPoint = wayPoint;
+
         float turnAmt = AngleAroundAxis(transform.forward, wayPoint.position - transform.position, Vector3.up);
+
 
         if(cinderBlock == true)
         {
