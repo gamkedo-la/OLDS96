@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarDrive : MonoBehaviour
+public class PlayerDrive : MonoBehaviour
 {
     private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
     public float finalVelocity = 500.0f; //added each sec while accelerating    
