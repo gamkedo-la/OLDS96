@@ -22,6 +22,14 @@ public class EnemyDrive : MonoBehaviour
     public Transform restartAt;
     public Transform wayPoint;
     public Transform wayPoint2;
+    //testing to see if i can get the whole game object
+    public GameObject wayPointWhole;
+
+    // ^ going to write some better variables
+    public GameObject wayPointSpawnedAt;
+    public WaypointData wayPointData;
+    private Transform nextWayPoint;
+
     //private Transform currentWayPoint = wayPoint; ask Chris why this throws an error
     private Transform currentWayPoint;
 
@@ -37,6 +45,7 @@ public class EnemyDrive : MonoBehaviour
      rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
      RestartAtSpawn();
      currentWayPoint = wayPoint;
+     nextWayPoint = wayPointSpawnedAt.GetComponent<WaypointData>().next.transform;
     }
 
     public void RestartAtSpawn(){
@@ -51,21 +60,13 @@ public class EnemyDrive : MonoBehaviour
 		dirB = dirB - Vector3.Project(dirB, axis);
 		float angle = Vector3.Angle(dirA, dirB);
 		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
-
-        // for ref Vector3 pathToSteerToward = (safetyPoint - transform.position) + (nextWaypoint - transform.position);
-        // i think transform.position can be used as a vector, not sure, but let's find out
 	}
 
     void Update()
     {
-
         if(Input.GetKeyUp(KeyCode.Space)){
             cinderBlock = !cinderBlock;
-        }
-        
-        //transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
-        //^ i think you would actually remove the input, and replace turnRate with whatever the turn function outputs
-        //rb.angularVelocity += turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal");
+        }   
     }
 
     void FixedUpdate(){
@@ -73,16 +74,16 @@ public class EnemyDrive : MonoBehaviour
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;
 
-        float distTo = Vector3.Distance(transform.position, currentWayPoint.position);
+        //float distTo = Vector3.Distance(transform.position, currentWayPoint.position);
+        float distTo = Vector3.Distance(transform.position, nextWayPoint.position);
 		float closeEnoughToWaypoint = 10.0f;
 
 		if(distTo < closeEnoughToWaypoint) {
-            //Debug.Log("close enough");
-            currentWayPoint = wayPoint2;
-            
+            //currentWayPoint = wayPoint2; change to next, current doesn't really make sense
+            nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
         }
 
-        float turnAmt = AngleAroundAxis(transform.forward, currentWayPoint.position - transform.position, Vector3.up);
+        float turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
 
 
         if(cinderBlock == true)
