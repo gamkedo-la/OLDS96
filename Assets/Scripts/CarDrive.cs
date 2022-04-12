@@ -35,23 +35,20 @@ public class CarDrive : MonoBehaviour
     }
 
     // Update is called once per frame
-    void BaseUpdate(int inputType) //something like this?
+    public void BaseUpdate(bool accelerate) //something like this?
     {
-        Vector3 flatForward = transform.forward;
-        flatForward.y = 0.0f;   
 
-
-        if(true) //change to if accel is tru
+        if(accelerate)
         {
+            //add to the current velocity according while accelerating
             currentVelocity = currentVelocity + (accelerationRate * Time.deltaTime);
         }
         else
         {
+            //subtract from the current velocity while decelerating
             currentVelocity = currentVelocity - (decelerationRate * Time.deltaTime);
         }
 
         //ensure the velocity never goes out of the initial/final boundaries
-        currentVelocity = Mathf.Clamp(currentVelocity, initialVelocity, finalVelocity);
-
-    }
+        currentVelocity = Mathf.Clamp(currentVelocity, initialVelocity, finalVelocity);    }
 }

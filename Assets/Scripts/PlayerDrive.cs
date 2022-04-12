@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CarDrive))] //tells script it requires CarDrive
+//[RequireComponent(typeof(CarDrive))] //tells script it requires CarDrive
 public class PlayerDrive : MonoBehaviour
 {
-    private CarDrive carDrive;
     private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
     public float finalVelocity = 500.0f; //added each sec while accelerating    
 
@@ -30,16 +29,14 @@ public class PlayerDrive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        carDrive = gameObject.GetComponent<CarDrive>();
-        carDrive.BaseStart();
+     rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
+     RestartAtSpawn();
     }
 
-    /*
     public void RestartAtSpawn(){
         transform.position = restartAt.position;
         transform.rotation = restartAt.rotation;
     }
-    */
 
     // Update is called once per frame
 
@@ -73,11 +70,13 @@ public class PlayerDrive : MonoBehaviour
 
         if(Input.GetAxisRaw("Vertical") > 0.0f) //forward
         {
-            carDrive.rb.velocity = carDrive.rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity; //vel ALREADY takes place over time
+            rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity; //vel ALREADY takes place over time
         }
         else if((Input.GetAxisRaw("Vertical") < 0.0f)) //brake
         {
-            carDrive.rb.velocity = carDrive.rb.velocity * brakeDecayPercent;
+            //rb.velocity = flatForward * -40.0f; //has the effect of immediately reversing the car
+            //rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity * currentBrake;
+            rb.velocity = rb.velocity * brakeDecayPercent;
         }
         // if above conditions aren't met, the vehicle will decelerate
 

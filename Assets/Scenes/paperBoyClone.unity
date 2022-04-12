@@ -1201,6 +1201,11 @@ Transform:
   m_Father: {fileID: 1797538739}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &977508380 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6742181815771978814, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+  m_PrefabInstance: {fileID: 2226773775596912781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &985126533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4655423327187884072, guid: 77c9bd968b6934dd6a633ed648b2653c, type: 3}
@@ -2722,6 +2727,30 @@ PrefabInstance:
     - target: {fileID: 2226773775565832517, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3.0386462
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539448867709689327, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: turnRate
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539448867709689327, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: restartAt
+      value: 
+      objectReference: {fileID: 977508380}
+    - target: {fileID: 2539448867709689327, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: driftPercent
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539448867709689327, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: finalVelocity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539448867709689327, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: accelerationRate
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539448867709689327, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: brakeDecayPercent
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 6334844470026876871, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
