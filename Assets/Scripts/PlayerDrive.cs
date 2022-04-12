@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CarDrive))] //tells script it requires CarDrive
 public class PlayerDrive : MonoBehaviour
 {
+    private CarDrive carDrive;
     private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
     public float finalVelocity = 500.0f; //added each sec while accelerating    
 
@@ -28,8 +30,9 @@ public class PlayerDrive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
-     RestartAtSpawn();
+        carDrive = gameObject.GetComponent<CarDrive>();
+        rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
+        RestartAtSpawn();
     }
 
     public void RestartAtSpawn(){
