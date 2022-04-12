@@ -20,10 +20,10 @@ public class CarDrive : MonoBehaviour
     public float turnRate = 10.0f;
     public Transform restartAt;
 
-    private Rigidbody rb;//Rigidbody is one word, not camelcase
+    public Rigidbody rb;//Rigidbody is one word, not camelcase
 
     // Start is called before the first frame update
-    void BaseStart()
+    public void BaseStart()
     {
         rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
         RestartAtSpawn();   

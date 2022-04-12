@@ -31,14 +31,15 @@ public class PlayerDrive : MonoBehaviour
     void Start()
     {
         carDrive = gameObject.GetComponent<CarDrive>();
-        rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
-        RestartAtSpawn();
+        carDrive.BaseStart();
     }
 
+    /*
     public void RestartAtSpawn(){
         transform.position = restartAt.position;
         transform.rotation = restartAt.rotation;
     }
+    */
 
     // Update is called once per frame
 
@@ -72,13 +73,11 @@ public class PlayerDrive : MonoBehaviour
 
         if(Input.GetAxisRaw("Vertical") > 0.0f) //forward
         {
-            rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity; //vel ALREADY takes place over time
+            carDrive.rb.velocity = carDrive.rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity; //vel ALREADY takes place over time
         }
         else if((Input.GetAxisRaw("Vertical") < 0.0f)) //brake
         {
-            //rb.velocity = flatForward * -40.0f; //has the effect of immediately reversing the car
-            //rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity * currentBrake;
-            rb.velocity = rb.velocity * brakeDecayPercent;
+            carDrive.rb.velocity = carDrive.rb.velocity * brakeDecayPercent;
         }
         // if above conditions aren't met, the vehicle will decelerate
 
