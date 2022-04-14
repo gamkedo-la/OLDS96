@@ -14,7 +14,7 @@ public class CarDrive : MonoBehaviour
     private float decelerationRate = 50.0f; //added each sec while accelerating
 
     //private float power = 0.0f; //the power applied to the car
-    private float currentVelocity = 0.0f; //self-explanatory
+    public float currentVelocity = 0.0f; //self-explanatory
     public float brakeDecayPercent = 0.0f; //self-explanatory
 
     public float turnRate = 10.0f;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(CarDrive))] //tells script it requires CarDrive
+[RequireComponent(typeof(CarDrive))] //tells script it requires CarDrive
 public class PlayerDrive : MonoBehaviour
 {
     private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
@@ -42,9 +42,8 @@ public class PlayerDrive : MonoBehaviour
 
     void Update()
     {
-        if(currentVelocity > 5.0f){
-            transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
-        }
+        transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
+        //rb.angularVelocity += turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal");
     }
 
     void FixedUpdate(){
