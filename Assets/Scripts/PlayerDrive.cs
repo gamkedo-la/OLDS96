@@ -42,8 +42,9 @@ public class PlayerDrive : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
-        //rb.angularVelocity += turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal");
+        if(currentVelocity > 5.0f){
+            transform.Rotate(Vector3.up, turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
+        }
     }
 
     void FixedUpdate(){
