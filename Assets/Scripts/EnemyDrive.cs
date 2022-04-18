@@ -2,26 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CarDrive))] //tells script it requires CarDrive
 public class EnemyDrive : MonoBehaviour
 {
-    private float initialVelocity = 0.0f; //target vel to decel to, maybe just use 0.0f
-    public float finalVelocity = 500.0f; //added each sec while accelerating    
 
-    public float driftPercent = 0.1f;
+    private CarDrive carDrive;
 
-    public float accelerationRate = 200.0f; //added each sec while accelerating
-    private float decelerationRate = 50.0f; //added each sec while accelerating
-
-    //private float power = 0.0f; //the power applied to the car
-    private float currentVelocity = 0.0f; //self-explanatory
-    public float brakeDecayPercent = 0.0f; //self-explanatory
-
-    //private float power; //don't think i need this anymore
-
-    public float turnRate = 10.0f;
-    public Transform restartAt;
     public Transform wayPoint;
     public Transform wayPoint2;
+
     //testing to see if i can get the whole game object
     public GameObject wayPointWhole;
 
@@ -33,27 +22,16 @@ public class EnemyDrive : MonoBehaviour
     //private Transform currentWayPoint = wayPoint; ask Chris why this throws an error
     private Transform currentWayPoint;
 
-    public DemoFunctionCallOnMe spacebarWillCallFunctionOn;
-
-    private Rigidbody rb;//Rigidbody is one word, not camelcase
-
     private bool cinderBlock = false;
 
     // Start is called before the first frame update
     void Start()
     {
-     rb = gameObject.GetComponent<Rigidbody>(); //template notation it's a func
-     RestartAtSpawn();
-     currentWayPoint = wayPoint;
-     nextWayPoint = wayPointSpawnedAt.GetComponent<WaypointData>().next.transform;
+        carDrive = gameObject.GetComponent<CarDrive>();
+        carDrive.BaseStart();
+        currentWayPoint = wayPoint;
+        nextWayPoint = wayPointSpawnedAt.GetComponent<WaypointData>().next.transform;
     }
-
-    public void RestartAtSpawn(){
-        transform.position = restartAt.position;
-        transform.rotation = restartAt.rotation;
-    }
-
-    // Update is called once per frame
 
     protected float AngleAroundAxis (Vector3 dirA, Vector3 dirB, Vector3 axis) {
 		dirA = dirA - Vector3.Project(dirA, axis);
@@ -62,22 +40,25 @@ public class EnemyDrive : MonoBehaviour
 		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
 	}
 
+    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space)){
-            cinderBlock = !cinderBlock;
-        }   
+ 
     }
 
     void FixedUpdate(){
 
         Vector3 flatForward = transform.forward;
-        flatForward.y = 0.0f;
+        flatForward.y = 0.0f;   
 
-        //float distTo = Vector3.Distance(transform.position, currentWayPoint.position);
+        if(Input.GetKeyUp(KeyCode.Space)){
+            cinderBlock = !cinderBlock;
+        }  
+
+        //TODO set accel to true based on cinderblock
+
         float distTo = Vector3.Distance(transform.position, nextWayPoint.position);
 		float closeEnoughToWaypoint = 10.0f;
-
 		if(distTo < closeEnoughToWaypoint) {
             //currentWayPoint = wayPoint2; change to next, current doesn't really make sense
             nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
@@ -85,31 +66,24 @@ public class EnemyDrive : MonoBehaviour
 
         float turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
 
-
-        if(cinderBlock == true)
-        {
-            currentVelocity = currentVelocity + (accelerationRate * Time.deltaTime);
-        }
-        else
-        {
-            currentVelocity = currentVelocity - (decelerationRate * Time.deltaTime);
-        }
-
-        //ensure the velocity never goes out of the initial/final boundaries
-        currentVelocity = Mathf.Clamp(currentVelocity, initialVelocity, finalVelocity);
-
-        //power = power + (Time.deltaTime * currentVelocity);        
+        carDrive.BaseUpdate(cinderBlock);
 
         if(cinderBlock == true) //forward
         {
-            rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity; //vel ALREADY takes place over time
+            carDrive.rb.velocity = carDrive.rb.velocity*carDrive.driftPercent + (1.0f - carDrive.driftPercent) * flatForward * carDrive.currentVelocity; //vel ALREADY takes place over time
             transform.Rotate(Vector3.up, turnAmt * Time.deltaTime);
         }
         else if((cinderBlock == false)) //brake
         {
-            //rb.velocity = flatForward * -40.0f; //has the effect of immediately reversing the car
-            //rb.velocity = rb.velocity*driftPercent + (1.0f - driftPercent) * flatForward * currentVelocity * currentBrake;
-            rb.velocity = rb.velocity * brakeDecayPercent;
+            if(carDrive == null){
+                Debug.Log("carDrive missing");
+            } 
+            else if(carDrive.rb == null){
+                Debug.Log("rb is missing");
+            }
+            
+            carDrive.rb.velocity = carDrive.rb.velocity * carDrive.brakeDecayPercent;
+            
         }
         // if above conditions aren't met, the vehicle will decelerate
 
