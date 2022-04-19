@@ -372,6 +372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: highway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 544ecff441c644db9bedbd8601bfcd66, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 544ecff441c644db9bedbd8601bfcd66, type: 3}
 --- !u!1 &247549905 stripped
@@ -1099,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: 9cd83b879df79495b8d0117eabe94fed, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46b423ba424cc4686b5cea15fe9adf3e, type: 2}
     - target: {fileID: -7493596028755563170, guid: 9cd83b879df79495b8d0117eabe94fed, type: 3}
       propertyPath: m_LocalScale.x
       value: 600
@@ -1303,7 +1311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1302741735
 Rigidbody:
   m_ObjectHideFlags: 0
