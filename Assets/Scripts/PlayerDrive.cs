@@ -18,6 +18,8 @@ public class PlayerDrive : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.up, carDrive.turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
+
+        speedmeterarmscript.ShowSpeed(carDrive.rb.velocity.magnitude,0,100);
     }
 
     void FixedUpdate(){
