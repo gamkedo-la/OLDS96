@@ -5,8 +5,8 @@ using UnityEngine;
 public class speedmeterarmscript : MonoBehaviour
 {
 
-    static float minAngle = 0.0f;
-    static float maxAngle = 200.0f;
+    static float minAngle = 200.0f;
+    static float maxAngle = 0.0f;
     static speedmeterarmscript thisSpeedo;
     // Start is called before the first frame update
      void Start()
