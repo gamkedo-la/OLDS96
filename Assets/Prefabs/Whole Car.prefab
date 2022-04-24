@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 4861103980802356226}
   - component: {fileID: 4861103980802356227}
   - component: {fileID: 4861103980802356224}
+  - component: {fileID: 9127923337187255344}
   m_Layer: 3
   m_Name: Whole Car
   m_TagString: Player
@@ -289,13 +290,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157bbd85e01ac4beda245890ed81d047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalVelocity: 500
+--- !u!114 &9127923337187255344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861103980802356253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8890373edda484b9be59ba19aca602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialVelocity: 0
+  finalVelocity: 5
   driftPercent: 0.1
   accelerationRate: 200
+  decelerationRate: 50
+  currentVelocity: 0
   brakeDecayPercent: 0
-  turnRate: 300
-  restartAt: {fileID: 2067670497}
-  spacebarWillCallFunctionOn: {fileID: 0}
+  turnRate: 10
+  restartAt: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &4861103981353515157
 GameObject:
   m_ObjectHideFlags: 0
