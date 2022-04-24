@@ -24,6 +24,24 @@ public class EnemyDrive : MonoBehaviour
 
     private bool cinderBlock = false;
 
+    void OnCollisionEnter(Collision coll){
+        if(LayerMask.LayerToName(coll.collider.gameObject.layer) == "Player"){
+            Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
+            float angle = Mathf.Atan2(relativeHitPt.x, relativeHitPt.z) * Mathf.Rad2Deg;
+            Debug.Log(coll.collider.gameObject.name + " " + angle);
+            float frontBackAngRange = 40.0f;
+            if(Mathf.Abs(angle) < frontBackAngRange/2){
+                Debug.Log("hit from front");
+            } else if (angle > 0.0f && angle < 180.0f - frontBackAngRange/2) {
+                Debug.Log("hit from right");
+            } else if (angle < 0.0f && angle > -180.0f + frontBackAngRange/2) {
+                Debug.Log("hit from left");
+            } else {
+                Debug.Log("hit from back");
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

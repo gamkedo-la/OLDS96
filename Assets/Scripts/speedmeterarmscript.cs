@@ -18,6 +18,10 @@ public class speedmeterarmscript : MonoBehaviour
     public static void ShowSpeed(float speed, float min, float max)
     {
         float ang = Mathf.Lerp(minAngle, maxAngle, Mathf.InverseLerp(min, max, speed));
-        thisSpeedo.transform.eulerAngles = new Vector3(0,0,ang);
+        if(thisSpeedo){
+            thisSpeedo.transform.eulerAngles = new Vector3(0,0,ang);
+        } else {
+            Debug.LogWarning("thisSpeedo reference lost");
+        }
     }
 }
