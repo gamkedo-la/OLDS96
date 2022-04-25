@@ -29,7 +29,13 @@ public class EnemyDrive : MonoBehaviour
             Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
             float angle = Mathf.Atan2(relativeHitPt.x, relativeHitPt.z) * Mathf.Rad2Deg;
             Debug.Log(coll.collider.gameObject.name + " " + angle);
-            float frontBackAngRange = 40.0f;
+            //note about tuning ranges: think about placing the van on a clock, the more "hours" a side occupies, the bigger it's range
+            //this is why (at the time of oo) front/back is 20.0 and the sides are 160.0, adds up to 180, but the sides are way bigger
+
+            //TODO: implement a collision cool down so you aren't double blasting the enemy van with force
+            //when you implement addForce or addForcePosition, use a BIG multiplier, the physics units are tiny and might not show visible change
+            //even if they are working
+            float frontBackAngRange = 40.0f; 
             if(Mathf.Abs(angle) < frontBackAngRange/2){
                 Debug.Log("hit from front");
             } else if (angle > 0.0f && angle < 180.0f - frontBackAngRange/2) {
