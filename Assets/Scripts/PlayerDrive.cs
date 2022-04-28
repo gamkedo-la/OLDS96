@@ -37,7 +37,8 @@ public class PlayerDrive : MonoBehaviour
             //add to the current velocity according while accelerating
             carDrive.currentVelocity = carDrive.currentVelocity + (carDrive.accelerationRate * Time.deltaTime);
         }
-        else if(Input.GetAxisRaw("Vertical") < 0.0f)
+        //else if(Input.GetAxisRaw("Vertical") < 0.0f)
+        else
         {
             //subtract from the current velocity while decelerating
             carDrive.currentVelocity = carDrive.currentVelocity - (carDrive.decelerationRate * Time.deltaTime);
