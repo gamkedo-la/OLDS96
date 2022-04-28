@@ -17,8 +17,10 @@ public class PlayerDrive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, carDrive.turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
-
+        if(carDrive.currentVelocity > 5){
+            transform.Rotate(Vector3.up, carDrive.turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
+        }
+        
         speedmeterarmscript.ShowSpeed(carDrive.rb.velocity.magnitude,0,100);
     }
 
