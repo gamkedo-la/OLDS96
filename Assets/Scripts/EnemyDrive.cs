@@ -77,6 +77,7 @@ public class EnemyDrive : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.Space)){
             cinderBlock = !cinderBlock;
+            Debug.Log("spacebar ctrl block reached");
         }  
 
         //TODO set accel to true based on cinderblock
