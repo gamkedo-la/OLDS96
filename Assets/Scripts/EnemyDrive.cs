@@ -67,18 +67,16 @@ public class EnemyDrive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
+        if(Input.GetKeyUp(KeyCode.Space)){
+            cinderBlock = !cinderBlock;
+            Debug.Log("ctrl block reached");
+        }  
     }
 
     void FixedUpdate(){
 
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;   
-
-        if(Input.GetKeyUp(KeyCode.Space)){
-            cinderBlock = !cinderBlock;
-            Debug.Log("ctrl block reached");
-        }  
 
         //TODO set accel to true based on cinderblock
 
