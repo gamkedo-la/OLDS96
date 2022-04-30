@@ -52,6 +52,7 @@ public class EnemyDrive : MonoBehaviour
     void Start()
     {
         carDrive = gameObject.GetComponent<CarDrive>();
+        //cameraSwitch = gameObject.GetComponent<CameraSwitch>();
         carDrive.BaseStart();
         currentWayPoint = wayPoint;
         nextWayPoint = wayPointSpawnedAt.GetComponent<WaypointData>().next.transform;
@@ -70,6 +71,18 @@ public class EnemyDrive : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space)){
             cinderBlock = !cinderBlock;
         }  
+
+        //Debug.Log(cameraSwitch);
+
+        /*
+        if(cinderBlock){
+            cameraSwitch.ShowEnemyView();
+        }
+
+        else if(!cinderBlock){
+            cameraSwitch.ShowMainView();
+        }
+        */
     }
 
     void FixedUpdate(){
