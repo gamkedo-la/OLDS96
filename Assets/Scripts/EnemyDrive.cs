@@ -69,7 +69,6 @@ public class EnemyDrive : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Space)){
             cinderBlock = !cinderBlock;
-            Debug.Log("ctrl block reached");
         }  
     }
 
@@ -91,8 +90,25 @@ public class EnemyDrive : MonoBehaviour
 
         carDrive.BaseUpdate(cinderBlock);
 
+        if(cinderBlock)
+        {
+            //add to the current velocity according while accelerating
+            carDrive.currentVelocity = carDrive.currentVelocity + (carDrive.accelerationRate * Time.deltaTime);
+        }
+        //else if(Input.GetAxisRaw("Vertical") < 0.0f)
+        else
+        {
+            //subtract from the current velocity while decelerating
+            carDrive.currentVelocity = carDrive.currentVelocity - (carDrive.decelerationRate * Time.deltaTime);
+        }
+
+        //ensure the velocity never goes out of the initial/final boundaries
+        carDrive.currentVelocity = Mathf.Clamp(carDrive.currentVelocity, carDrive.initialVelocity, carDrive.finalVelocity);  
+
+
         if(cinderBlock == true) //forward
         {
+            Debug.Log(carDrive.rb.velocity);
             carDrive.rb.velocity = carDrive.rb.velocity*carDrive.driftPercent + (1.0f - carDrive.driftPercent) * flatForward * carDrive.currentVelocity; //vel ALREADY takes place over time
             transform.Rotate(Vector3.up, turnAmt * Time.deltaTime);
         }
