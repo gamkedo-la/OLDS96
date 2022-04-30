@@ -6,6 +6,11 @@ using UnityEngine;
 public class EnemyDrive : MonoBehaviour
 {
 
+    //remove below once you learn how to reference the CameraSwitch script
+    public Camera mainCamera;
+    public Camera enemyCamera;
+
+
     private CarDrive carDrive;
 
     public Transform wayPoint;
@@ -23,6 +28,20 @@ public class EnemyDrive : MonoBehaviour
     private Transform currentWayPoint;
 
     private bool cinderBlock = false;
+
+    //REMOVE BELOW HELPER FUNCTIONS ONCE CAMSWITCH SCRIPT WORKS
+    // Call this function to disable main camera,
+    // and enable enemy camera.
+    public void ShowEnemyView() {
+        mainCamera.enabled = false;
+        enemyCamera.enabled = true;
+    }    
+    // Call this function to enable main camera,
+    // and disable enemy camera.
+    public void ShowMainView() {
+        mainCamera.enabled = true;
+        enemyCamera.enabled = false;
+    }
 
     void OnCollisionEnter(Collision coll){
         if(LayerMask.LayerToName(coll.collider.gameObject.layer) == "Player"){
@@ -71,6 +90,15 @@ public class EnemyDrive : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space)){
             cinderBlock = !cinderBlock;
         }  
+
+        if(cinderBlock){
+            ShowEnemyView();
+        }
+
+        else if(!cinderBlock){
+            ShowMainView();
+        }
+
 
         //Debug.Log(cameraSwitch);
 
