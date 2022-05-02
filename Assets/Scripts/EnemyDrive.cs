@@ -49,7 +49,7 @@ public class EnemyDrive : MonoBehaviour
         if(LayerMask.LayerToName(coll.collider.gameObject.layer) == "Player"){
             Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
             float angle = Mathf.Atan2(relativeHitPt.x, relativeHitPt.z) * Mathf.Rad2Deg;
-            Debug.Log(coll.collider.gameObject.name + " " + angle);
+            //Debug.Log(coll.collider.gameObject.name + " " + angle);
             //note about tuning ranges: think about placing the van on a clock, the more "hours" a side occupies, the bigger it's range
             //this is why (at the time of oo) front/back is 20.0 and the sides are 160.0, adds up to 180, but the sides are way bigger
 
@@ -75,7 +75,7 @@ public class EnemyDrive : MonoBehaviour
         carDrive = gameObject.GetComponent<CarDrive>();
         //cameraSwitch = gameObject.GetComponent<CameraSwitch>();
         carDrive.BaseStart();
-        currentWayPoint = wayPoint;
+        //currentWayPoint = wayPoint;
         nextWayPoint = wayPointSpawnedAt.GetComponent<WaypointData>().next.transform;
     }
 
@@ -96,6 +96,11 @@ public class EnemyDrive : MonoBehaviour
         }
 
         float turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
+        if(Mathf.Abs(turnAmt) > 100.0f){ 
+            Debug.LogWarning("waypoint is behind van");
+            nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
+            turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
+        } //if waypoint happens to be behind the car
 
 		float angDeltaForGentleTurn = 10.0f;
 		float angDeltaForSharpTurn = 30.0f;
@@ -103,23 +108,31 @@ public class EnemyDrive : MonoBehaviour
 		float sharpTurn = 1.0f;
 		float gentleTurnEnginePower = 0.9f;
 		float sharpTurnEnginePower = 0.6f;
+        int pathWay = 0;
 
 		if(turnAmt < -angDeltaForSharpTurn) {
+            pathWay = -1;
 			turnControl = -sharpTurn;
 			gasControl = sharpTurnEnginePower;
 		} else if(turnAmt > angDeltaForSharpTurn) {
+            pathWay = 1;
 			turnControl = sharpTurn;
 			gasControl = sharpTurnEnginePower;
 		} else if(turnAmt < -angDeltaForGentleTurn) {
+            pathWay = -2;
 			turnControl = -gentleTurn;
 			gasControl = gentleTurnEnginePower;
 		} else if(turnAmt > angDeltaForGentleTurn) {
+            pathWay = 2;
 			turnControl = gentleTurn;
 			gasControl = gentleTurnEnginePower;
 		} else {
+            pathWay = 0;
 			turnControl = 0.0f;
 			gasControl = 1.0f;
 		}
+
+        Debug.Log(pathWay + ", " + turnAmt + ", " + nextWayPoint.name);
 	}
 	
 
@@ -191,10 +204,11 @@ public class EnemyDrive : MonoBehaviour
         //ensure the velocity never goes out of the initial/final boundaries
         carDrive.currentVelocity = Mathf.Clamp(carDrive.currentVelocity, carDrive.initialVelocity, carDrive.finalVelocity);  
 
+        //Debug.Log("script being reached" + cinderBlock);
 
         if(cinderBlock == true) //forward
         {
-            Debug.Log(carDrive.rb.velocity);
+            //Debug.Log(carDrive.rb.velocity);
             carDrive.rb.velocity = carDrive.rb.velocity*carDrive.driftPercent + (1.0f - carDrive.driftPercent) * flatForward * carDrive.currentVelocity; //vel ALREADY takes place over time
             //transform.Rotate(Vector3.up, turnAmt * Time.deltaTime);
             transform.Rotate(Vector3.up, turnControl * Time.deltaTime);
