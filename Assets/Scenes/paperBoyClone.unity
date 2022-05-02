@@ -14958,7 +14958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: 0
-  finalVelocity: 10
+  finalVelocity: 100
   driftPercent: 0.1
   accelerationRate: 200
   decelerationRate: 50

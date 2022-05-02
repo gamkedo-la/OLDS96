@@ -30,6 +30,7 @@ public class EnemyDrive : MonoBehaviour
     private bool cinderBlock = false;
     private float gasControl = 0.0f;
     private float turnControl = 0.0f;
+    private float turnAmt = 0.0f;
 
     //REMOVE BELOW HELPER FUNCTIONS ONCE CAMSWITCH SCRIPT WORKS
     // Call this function to disable main camera,
@@ -95,15 +96,15 @@ public class EnemyDrive : MonoBehaviour
             nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
         }
 
-        float turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
+        turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
         if(Mathf.Abs(turnAmt) > 100.0f){ 
             Debug.LogWarning("waypoint is behind van");
             nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
             turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
         } //if waypoint happens to be behind the car
 
-		float angDeltaForGentleTurn = 10.0f;
-		float angDeltaForSharpTurn = 30.0f;
+		float angDeltaForGentleTurn = 200.0f;
+		float angDeltaForSharpTurn = 200.0f;
 		float gentleTurn = 0.5f;
 		float sharpTurn = 1.0f;
 		float gentleTurnEnginePower = 0.9f;
@@ -210,8 +211,8 @@ public class EnemyDrive : MonoBehaviour
         {
             //Debug.Log(carDrive.rb.velocity);
             carDrive.rb.velocity = carDrive.rb.velocity*carDrive.driftPercent + (1.0f - carDrive.driftPercent) * flatForward * carDrive.currentVelocity; //vel ALREADY takes place over time
-            //transform.Rotate(Vector3.up, turnAmt * Time.deltaTime);
-            transform.Rotate(Vector3.up, turnControl * Time.deltaTime);
+            transform.Rotate(Vector3.up, (turnAmt * 4.0f) * Time.deltaTime);
+            //transform.Rotate(Vector3.up, (turnControl*1000.0f) * Time.deltaTime);
             
         }
         else if((cinderBlock == false)) //brake
