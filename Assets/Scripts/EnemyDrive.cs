@@ -28,6 +28,8 @@ public class EnemyDrive : MonoBehaviour
     private Transform currentWayPoint;
 
     private bool cinderBlock = false;
+    private float gasControl = 0.0f;
+    private float turnControl = 0.0f;
 
     //REMOVE BELOW HELPER FUNCTIONS ONCE CAMSWITCH SCRIPT WORKS
     // Call this function to disable main camera,
@@ -84,6 +86,43 @@ public class EnemyDrive : MonoBehaviour
 		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
 	}
 
+    void SteerTowardPoint() {
+
+        float distTo = Vector3.Distance(transform.position, nextWayPoint.position);
+		float closeEnoughToWaypoint = 10.0f;
+		if(distTo < closeEnoughToWaypoint) {
+            //currentWayPoint = wayPoint2; change to next, current doesn't really make sense
+            nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
+        }
+
+        float turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
+
+		float angDeltaForGentleTurn = 10.0f;
+		float angDeltaForSharpTurn = 30.0f;
+		float gentleTurn = 0.5f;
+		float sharpTurn = 1.0f;
+		float gentleTurnEnginePower = 0.9f;
+		float sharpTurnEnginePower = 0.6f;
+
+		if(turnAmt < -angDeltaForSharpTurn) {
+			turnControl = -sharpTurn;
+			gasControl = sharpTurnEnginePower;
+		} else if(turnAmt > angDeltaForSharpTurn) {
+			turnControl = sharpTurn;
+			gasControl = sharpTurnEnginePower;
+		} else if(turnAmt < -angDeltaForGentleTurn) {
+			turnControl = -gentleTurn;
+			gasControl = gentleTurnEnginePower;
+		} else if(turnAmt > angDeltaForGentleTurn) {
+			turnControl = gentleTurn;
+			gasControl = gentleTurnEnginePower;
+		} else {
+			turnControl = 0.0f;
+			gasControl = 1.0f;
+		}
+	}
+	
+
     // Update is called once per frame
     void Update()
     {
@@ -118,8 +157,7 @@ public class EnemyDrive : MonoBehaviour
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;   
 
-        //TODO set accel to true based on cinderblock
-
+        /*
         float distTo = Vector3.Distance(transform.position, nextWayPoint.position);
 		float closeEnoughToWaypoint = 10.0f;
 		if(distTo < closeEnoughToWaypoint) {
@@ -128,22 +166,27 @@ public class EnemyDrive : MonoBehaviour
         }
 
         float turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
+        */
 
         carDrive.BaseUpdate(cinderBlock);
+        SteerTowardPoint();
+
+        //call steerToPoint here: will continuously steer and apply the right gas and turn to the car per time
+        //below the private, class level variables gasControl and turnControl will be applied to the actual physics calculations 
 
         if(cinderBlock)
         {
             //add to the current velocity according while accelerating
-            carDrive.currentVelocity = carDrive.currentVelocity + (carDrive.accelerationRate * Time.deltaTime);
+            //carDrive.currentVelocity = carDrive.currentVelocity + (carDrive.accelerationRate * Time.deltaTime);
             //TODO throw drivepower in here? like...
-            //carDrive.currentVelocity = carDrive.currentVelocity + (carDrive.accelerationRate * gasControl (could be a float, like say 0.5f for half speed) * Time.deltaTime);
+            carDrive.currentVelocity = carDrive.currentVelocity + (carDrive.accelerationRate * gasControl * Time.deltaTime);
         }
         //else if(Input.GetAxisRaw("Vertical") < 0.0f)
         else
         {
             //subtract from the current velocity while decelerating
             carDrive.currentVelocity = carDrive.currentVelocity - (carDrive.decelerationRate * Time.deltaTime);
-        }
+        }   
 
         //ensure the velocity never goes out of the initial/final boundaries
         carDrive.currentVelocity = Mathf.Clamp(carDrive.currentVelocity, carDrive.initialVelocity, carDrive.finalVelocity);  
@@ -153,8 +196,8 @@ public class EnemyDrive : MonoBehaviour
         {
             Debug.Log(carDrive.rb.velocity);
             carDrive.rb.velocity = carDrive.rb.velocity*carDrive.driftPercent + (1.0f - carDrive.driftPercent) * flatForward * carDrive.currentVelocity; //vel ALREADY takes place over time
-            transform.Rotate(Vector3.up, turnAmt * Time.deltaTime);
-            //transform.Rotate(Vector3.up, turnControl * Time.deltaTime);
+            //transform.Rotate(Vector3.up, turnAmt * Time.deltaTime);
+            transform.Rotate(Vector3.up, turnControl * Time.deltaTime);
             
         }
         else if((cinderBlock == false)) //brake
