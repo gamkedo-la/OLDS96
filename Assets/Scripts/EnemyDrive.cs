@@ -135,6 +135,8 @@ public class EnemyDrive : MonoBehaviour
         {
             //add to the current velocity according while accelerating
             carDrive.currentVelocity = carDrive.currentVelocity + (carDrive.accelerationRate * Time.deltaTime);
+            //TODO throw drivepower in here? like...
+            //carDrive.currentVelocity = carDrive.currentVelocity + (carDrive.accelerationRate * gasControl (could be a float, like say 0.5f for half speed) * Time.deltaTime);
         }
         //else if(Input.GetAxisRaw("Vertical") < 0.0f)
         else
@@ -152,6 +154,8 @@ public class EnemyDrive : MonoBehaviour
             Debug.Log(carDrive.rb.velocity);
             carDrive.rb.velocity = carDrive.rb.velocity*carDrive.driftPercent + (1.0f - carDrive.driftPercent) * flatForward * carDrive.currentVelocity; //vel ALREADY takes place over time
             transform.Rotate(Vector3.up, turnAmt * Time.deltaTime);
+            //transform.Rotate(Vector3.up, turnControl * Time.deltaTime);
+            
         }
         else if((cinderBlock == false)) //brake
         {
