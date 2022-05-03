@@ -78,6 +78,7 @@ public class EnemyDrive : MonoBehaviour
         //cameraSwitch = gameObject.GetComponent<CameraSwitch>();
         carDrive.BaseStart();
         //currentWayPoint = wayPoint;
+        cinderBlock = true;
         nextWayPoint = wayPointSpawnedAt.GetComponent<WaypointData>().next.transform;
     }
 
