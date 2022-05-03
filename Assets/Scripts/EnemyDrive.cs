@@ -145,6 +145,7 @@ public class EnemyDrive : MonoBehaviour
             cinderBlock = !cinderBlock;
         }  
 
+        /*
         if(cinderBlock){
             ShowEnemyView();
         }
@@ -152,6 +153,7 @@ public class EnemyDrive : MonoBehaviour
         else if(!cinderBlock){
             ShowMainView();
         }
+        */
 
 
         //Debug.Log(cameraSwitch);
