@@ -11,4 +11,11 @@ public class WaypointData : MonoBehaviour
             Gizmos.DrawLine(transform.position, next.transform.position); //draw red line to next waypoint (in editor)
         }
     }
+
+    void Update(){
+        Debug.Log("Waypoint update reached");
+        if(Input.GetKeyUp(KeyCode.Space)){
+            Debug.Log("this code reached");
+        }
+    }
 }
