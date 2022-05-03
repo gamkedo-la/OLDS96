@@ -48,6 +48,7 @@ public class EnemyDrive : MonoBehaviour
 
     void OnCollisionEnter(Collision coll){
         if(LayerMask.LayerToName(coll.collider.gameObject.layer) == "Player"){
+            Destroy(gameObject);
             Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
             float angle = Mathf.Atan2(relativeHitPt.x, relativeHitPt.z) * Mathf.Rad2Deg;
             //Debug.Log(coll.collider.gameObject.name + " " + angle);
@@ -133,7 +134,7 @@ public class EnemyDrive : MonoBehaviour
 			gasControl = 1.0f;
 		}
 
-        Debug.Log(pathWay + ", " + turnAmt + ", " + nextWayPoint.name);
+        //Debug.Log(pathWay + ", " + turnAmt + ", " + nextWayPoint.name);
 	}
 	
 
