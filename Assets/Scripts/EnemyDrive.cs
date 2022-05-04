@@ -142,6 +142,7 @@ public class EnemyDrive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(Input.GetKeyUp(KeyCode.Space)){
             cinderBlock = !cinderBlock;
         }  
