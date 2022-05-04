@@ -2858,6 +2858,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6379881994026629152, guid: 663be67ca36db42df95498e517d784ee, type: 3}
   m_PrefabInstance: {fileID: 399660856}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &403127177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 909608175272445277, guid: 663be67ca36db42df95498e517d784ee, type: 3}
+  m_PrefabInstance: {fileID: 2014595166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &403127180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403127177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41f5a9bb3e8e4a0a87141b853fd15da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  van: {fileID: 1301554659367251002, guid: 1778ab3def3dc48ccab020ae0621fbf9, type: 3}
 --- !u!1001 &413552324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13316,7 +13334,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5803540816670028863, guid: 663be67ca36db42df95498e517d784ee, type: 3}
   m_PrefabInstance: {fileID: 2014595166}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 403127177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e5183288f8fb4e23b7a6b2b07a94d50, type: 3}
@@ -14443,7 +14461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2226773773706055133, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -153
+      value: -163.8
       objectReference: {fileID: 0}
     - target: {fileID: 2226773773706055133, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14451,7 +14469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2226773773706055133, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1532
+      value: -1009
       objectReference: {fileID: 0}
     - target: {fileID: 2226773773706055135, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: turnRate

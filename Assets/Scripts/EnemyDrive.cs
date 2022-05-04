@@ -90,52 +90,53 @@ public class EnemyDrive : MonoBehaviour
 	}
 
     void SteerTowardPoint() {
+        if(nextWayPoint){
+            float distTo = Vector3.Distance(transform.position, nextWayPoint.position);
+            float closeEnoughToWaypoint = 10.0f;
+            if(distTo < closeEnoughToWaypoint) {
+                //currentWayPoint = wayPoint2; change to next, current doesn't really make sense
+                nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
+            }
 
-        float distTo = Vector3.Distance(transform.position, nextWayPoint.position);
-		float closeEnoughToWaypoint = 10.0f;
-		if(distTo < closeEnoughToWaypoint) {
-            //currentWayPoint = wayPoint2; change to next, current doesn't really make sense
-            nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
-        }
-
-        turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
-        if(Mathf.Abs(turnAmt) > 100.0f){ 
-            Debug.LogWarning("waypoint is behind van");
-            nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
             turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
-        } //if waypoint happens to be behind the car
+            if(Mathf.Abs(turnAmt) > 100.0f){ 
+                Debug.LogWarning("waypoint is behind van");
+                nextWayPoint = nextWayPoint.GetComponent<WaypointData>().next.transform;
+                turnAmt = AngleAroundAxis(transform.forward, nextWayPoint.position - transform.position, Vector3.up);
+            } //if waypoint happens to be behind the car
 
-		float angDeltaForGentleTurn = 200.0f;
-		float angDeltaForSharpTurn = 200.0f;
-		float gentleTurn = 0.5f;
-		float sharpTurn = 1.0f;
-		float gentleTurnEnginePower = 0.9f;
-		float sharpTurnEnginePower = 0.6f;
-        int pathWay = 0;
+            float angDeltaForGentleTurn = 200.0f;
+            float angDeltaForSharpTurn = 200.0f;
+            float gentleTurn = 0.5f;
+            float sharpTurn = 1.0f;
+            float gentleTurnEnginePower = 0.9f;
+            float sharpTurnEnginePower = 0.6f;
+            int pathWay = 0;
 
-		if(turnAmt < -angDeltaForSharpTurn) {
-            pathWay = -1;
-			turnControl = -sharpTurn;
-			gasControl = sharpTurnEnginePower;
-		} else if(turnAmt > angDeltaForSharpTurn) {
-            pathWay = 1;
-			turnControl = sharpTurn;
-			gasControl = sharpTurnEnginePower;
-		} else if(turnAmt < -angDeltaForGentleTurn) {
-            pathWay = -2;
-			turnControl = -gentleTurn;
-			gasControl = gentleTurnEnginePower;
-		} else if(turnAmt > angDeltaForGentleTurn) {
-            pathWay = 2;
-			turnControl = gentleTurn;
-			gasControl = gentleTurnEnginePower;
-		} else {
-            pathWay = 0;
-			turnControl = 0.0f;
-			gasControl = 1.0f;
-		}
+            if(turnAmt < -angDeltaForSharpTurn) {
+                pathWay = -1;
+                turnControl = -sharpTurn;
+                gasControl = sharpTurnEnginePower;
+            } else if(turnAmt > angDeltaForSharpTurn) {
+                pathWay = 1;
+                turnControl = sharpTurn;
+                gasControl = sharpTurnEnginePower;
+            } else if(turnAmt < -angDeltaForGentleTurn) {
+                pathWay = -2;
+                turnControl = -gentleTurn;
+                gasControl = gentleTurnEnginePower;
+            } else if(turnAmt > angDeltaForGentleTurn) {
+                pathWay = 2;
+                turnControl = gentleTurn;
+                gasControl = gentleTurnEnginePower;
+            } else {
+                pathWay = 0;
+                turnControl = 0.0f;
+                gasControl = 1.0f;
+            }
 
-        //Debug.Log(pathWay + ", " + turnAmt + ", " + nextWayPoint.name);
+            //Debug.Log(pathWay + ", " + turnAmt + ", " + nextWayPoint.name);
+        }
 	}
 	
 
