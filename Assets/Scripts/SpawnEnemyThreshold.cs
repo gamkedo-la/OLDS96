@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeBonus : MonoBehaviour
+public class SpawnEnemyThreshold : MonoBehaviour
 {
     private bool isTriggered = false; 
 
@@ -12,9 +12,7 @@ public class TimeBonus : MonoBehaviour
             return;
         }
         if(collider.gameObject.tag == "Player"){
-            //timerScript.timeRemaining += 200;
-            //Debug.Log('time bonus!');
-            Debug.Log("time bonus!");
+            Debug.Log("spawn enemy time!");
             isTriggered = true;   
         }
  
