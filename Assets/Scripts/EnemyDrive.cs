@@ -15,7 +15,7 @@ public class EnemyDrive : MonoBehaviour
 
     // ^ going to write some better variables
     public GameObject wayPointSpawnedAt;
-    private Transform nextWayPoint;
+    public Transform nextWayPoint;
 
     //private Transform currentWayPoint = wayPoint; ask Chris why this throws an error
     private Transform currentWayPoint;
