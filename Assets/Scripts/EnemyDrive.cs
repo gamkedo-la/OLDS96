@@ -13,15 +13,8 @@ public class EnemyDrive : MonoBehaviour
 
     private CarDrive carDrive;
 
-    public Transform wayPoint;
-    public Transform wayPoint2;
-
-    //testing to see if i can get the whole game object
-    public GameObject wayPointWhole;
-
     // ^ going to write some better variables
     public GameObject wayPointSpawnedAt;
-    public WaypointData wayPointData;
     private Transform nextWayPoint;
 
     //private Transform currentWayPoint = wayPoint; ask Chris why this throws an error

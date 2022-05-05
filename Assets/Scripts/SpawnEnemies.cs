@@ -7,6 +7,7 @@ public class SpawnEnemies : MonoBehaviour
 
     public GameObject van;
     private GameObject vanInstance;
+    private EnemyDrive eScript;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class SpawnEnemies : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space)){
             //Debug.Log("space key pressed in waypoint");
             vanInstance = Instantiate(van, gameObject.transform);
+            eScript = vanInstance.GetComponent<EnemyDrive>();
         }   
 
     }
