@@ -12070,6 +12070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a9b737ce10347c2a2ec2a5cb261f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemySpawnPoint: {fileID: 403127177}
 --- !u!1 &1864977495
 GameObject:
   m_ObjectHideFlags: 0
