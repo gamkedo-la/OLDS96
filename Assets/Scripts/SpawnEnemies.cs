@@ -26,4 +26,11 @@ public class SpawnEnemies : MonoBehaviour
         }   
 
     }
+
+    public void SpawnEnemy()
+    {
+        vanInstance = Instantiate(van, gameObject.transform);
+        enemyDriveScript = vanInstance.GetComponent<EnemyDrive>();
+        enemyDriveScript.wayPointSpawnedAt = gameObject;
+    }
 }
