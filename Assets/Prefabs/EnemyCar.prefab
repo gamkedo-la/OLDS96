@@ -69,11 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   enemyCamera: {fileID: 0}
-  wayPoint: {fileID: 0}
-  wayPoint2: {fileID: 0}
-  wayPointWhole: {fileID: 0}
   wayPointSpawnedAt: {fileID: 0}
-  wayPointData: {fileID: 0}
+  nextWayPoint: {fileID: 0}
 --- !u!114 &1301554659367251000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: 0
-  finalVelocity: 100
+  finalVelocity: 0
   driftPercent: 0.1
   accelerationRate: 200
   decelerationRate: 50
