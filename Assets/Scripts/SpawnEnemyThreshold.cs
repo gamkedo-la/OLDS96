@@ -18,13 +18,13 @@ public class SpawnEnemyThreshold : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        Debug.Log(collider.gameObject.tag);
+
         if(isTriggered){
             return;
         }
         if(collider.gameObject.tag == "Player"){
-            Debug.Log("spawn enemy time!");
             enemySpawnScript.SpawnEnemy(); 
-            //this probably won't exactly work, but it's a WIP, *something*
             isTriggered = true;   
         }
  
