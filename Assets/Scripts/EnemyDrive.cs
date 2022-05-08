@@ -21,6 +21,7 @@ public class EnemyDrive : MonoBehaviour
     private Transform currentWayPoint;
 
     private bool cinderBlock = false;
+    private bool camSwitch = false;
     private float gasControl = 0.0f;
     private float turnControl = 0.0f;
     private float turnAmt = 0.0f;
@@ -142,11 +143,15 @@ public class EnemyDrive : MonoBehaviour
         }  
 
         /*
-        if(cinderBlock){
+        if(Input.GetKeyUp(KeyCode.C)){
+            //camSwitch = !camSwitch;
+        }  
+
+        if(camSwitch){
             ShowEnemyView();
         }
 
-        else if(!cinderBlock){
+        else if(!camSwitch){
             ShowMainView();
         }
         */
