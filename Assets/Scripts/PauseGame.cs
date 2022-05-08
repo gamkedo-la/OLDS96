@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+ using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
     private bool isPaused = false;
+    public Image overlay;
+    public Image pauseText;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +20,12 @@ public class PauseGame : MonoBehaviour
         if (Input.GetKeyDown("escape")) {
             if (isPaused) {
                 Resume();
+                overlay.enabled = false;
+                pauseText.enabled = false;
             } else {
                 Pause();
+                overlay.enabled = true;
+                pauseText.enabled = true;
             }
         }
     }
