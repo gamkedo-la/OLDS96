@@ -14008,6 +14008,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2226773775169706264, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 148
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775169706264, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775169706264, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775169706264, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775169706264, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775169706264, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775169706264, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226773775169706265, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15
+      objectReference: {fileID: 0}
     - target: {fileID: 2226773775525854463, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.96135664
