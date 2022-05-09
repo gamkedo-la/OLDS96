@@ -40,6 +40,16 @@ public class EnemyDrive : MonoBehaviour
         enemyCamera.enabled = false;
     }
 
+    private void hitVan(){
+            Debug.Log("hit from j");
+            carDrive.rb.drag = 0.0f;
+            carDrive.rb.angularDrag = 0.0f;
+            carDrive.rb.freezeRotation = false;
+            carDrive.rb.AddForce(transform.right * 500.0f + (Vector3.up * 500.0f));
+            carDrive.rb.angularVelocity = -(transform.forward * 3000.0f); //in radians
+            this.enabled = false; //disables script
+    }
+
     void OnCollisionEnter(Collision coll){
         if(LayerMask.LayerToName(coll.collider.gameObject.layer) == "Player"){
             //Destroy(gameObject);
