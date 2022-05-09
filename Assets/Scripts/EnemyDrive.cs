@@ -73,7 +73,9 @@ public class EnemyDrive : MonoBehaviour
         carDrive.BaseStart();
         //currentWayPoint = wayPoint;
         cinderBlock = true;
-        nextWayPoint = wayPointSpawnedAt.GetComponent<WaypointData>().next.transform;
+        if(wayPointSpawnedAt){
+            nextWayPoint = wayPointSpawnedAt.GetComponent<WaypointData>().next.transform;
+        }
     }
 
     protected float AngleAroundAxis (Vector3 dirA, Vector3 dirB, Vector3 axis) {
@@ -137,6 +139,30 @@ public class EnemyDrive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetKeyUp(KeyCode.J))
+        {
+            Debug.Log("hit from j");
+            carDrive.rb.drag = 0.0f;
+            carDrive.rb.angularDrag = 0.0f;
+            carDrive.rb.freezeRotation = false;
+            carDrive.rb.AddForce(transform.right * 500.0f + (Vector3.up * 500.0f));
+            carDrive.rb.angularVelocity = -(transform.forward * 3000.0f); //in radians
+            this.enabled = false; //disables script
+        }
+
+        if(Input.GetKeyUp(KeyCode.L))
+        {
+            Debug.Log("hit from l");
+        }
+        if(Input.GetKeyUp(KeyCode.I))
+        {
+            Debug.Log("hit from i");
+        }
+        if(Input.GetKeyUp(KeyCode.K))
+        {
+            Debug.Log("hit from k");
+        }
 
         if(Input.GetKeyUp(KeyCode.Space)){
             cinderBlock = !cinderBlock;
