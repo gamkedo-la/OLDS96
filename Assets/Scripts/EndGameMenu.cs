@@ -8,6 +8,7 @@ public class EndGameMenu : MonoBehaviour
     public string button1SceneName = "TitleScreen";
     public string button2SceneName = "paperBoyClone";
     
+
     public void onClickButton1()
     {
         SceneManager.LoadScene(this.button1SceneName);
@@ -16,4 +17,7 @@ public class EndGameMenu : MonoBehaviour
     {
         SceneManager.LoadScene(this.button2SceneName);
     }
+   
+
+
 }

@@ -16,7 +16,7 @@ public class FinishLine : MonoBehaviour
         }
         if (collider.gameObject.tag == "Player") 
         {
-            SceneManager.LoadScene("TitleScreen");
+            SceneManager.LoadScene("EndGame");
             isTriggered = true; 
         }
     }
