@@ -40,17 +40,21 @@ public class EnemyDrive : MonoBehaviour
         enemyCamera.enabled = false;
     }
 
-    private void hitVan(){
-            Debug.Log("hit from j");
-            carDrive.rb.drag = 0.0f;
-            carDrive.rb.angularDrag = 0.0f;
-            carDrive.rb.freezeRotation = false;
-            carDrive.rb.AddForce(transform.right * 500.0f + (Vector3.up * 500.0f));
-            carDrive.rb.angularVelocity = -(transform.forward * 3000.0f); //in radians
-            this.enabled = false; //disables script
+    private void hitVan(Vector3 hitDirectionAndForce, Vector3 spinDirectionAndForce, float upForce){ //transform.r,l,back,f
+        Debug.Log("hit van called");
+        carDrive.rb.drag = 0.0f;
+        carDrive.rb.angularDrag = 0.0f;
+        carDrive.rb.freezeRotation = false;
+        carDrive.rb.AddForce(hitDirectionAndForce + (Vector3.up * upForce));
+        carDrive.rb.angularVelocity = spinDirectionAndForce; //in radians
+        this.enabled = false; //disables script
+        Destroy(gameObject, 3.0f);
     }
 
     void OnCollisionEnter(Collision coll){
+        if(this.enabled == false){
+            return;
+        }
         if(LayerMask.LayerToName(coll.collider.gameObject.layer) == "Player"){
             //Destroy(gameObject);
             Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
@@ -65,12 +69,16 @@ public class EnemyDrive : MonoBehaviour
             float frontBackAngRange = 40.0f; 
             if(Mathf.Abs(angle) < frontBackAngRange/2){
                 Debug.Log("hit from front");
+                hitVan(transform.forward * -500.0f, transform.right * 3000.0f, 500.0f);
             } else if (angle > 0.0f && angle < 180.0f - frontBackAngRange/2) {
                 Debug.Log("hit from right");
+                hitVan(transform.right * -500.0f, transform.forward * 3000.0f, 500.0f);
             } else if (angle < 0.0f && angle > -180.0f + frontBackAngRange/2) {
                 Debug.Log("hit from left");
+                hitVan(transform.right * 500.0f, transform.forward * -6000.0f, 500.0f);
             } else {
                 Debug.Log("hit from back");
+                hitVan(transform.forward * 500.0f, transform.right * -3000.0f, 500.0f);
             }
         }
     }
@@ -152,26 +160,20 @@ public class EnemyDrive : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.J))
         {
-            Debug.Log("hit from j");
-            carDrive.rb.drag = 0.0f;
-            carDrive.rb.angularDrag = 0.0f;
-            carDrive.rb.freezeRotation = false;
-            carDrive.rb.AddForce(transform.right * 500.0f + (Vector3.up * 500.0f));
-            carDrive.rb.angularVelocity = -(transform.forward * 3000.0f); //in radians
-            this.enabled = false; //disables script
+            //hitVan(transform.right * 500.0f, transform.forward * -3000.0f);
         }
 
         if(Input.GetKeyUp(KeyCode.L))
         {
-            Debug.Log("hit from l");
+            //hitVan();
         }
         if(Input.GetKeyUp(KeyCode.I))
         {
-            Debug.Log("hit from i");
+            //hitVan();
         }
         if(Input.GetKeyUp(KeyCode.K))
         {
-            Debug.Log("hit from k");
+            //Debug.Log("hit from k");
         }
 
         if(Input.GetKeyUp(KeyCode.Space)){
