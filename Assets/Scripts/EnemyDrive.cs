@@ -41,7 +41,7 @@ public class EnemyDrive : MonoBehaviour
     }
 
     private void hitVan(Vector3 hitDirectionAndForce, Vector3 spinDirectionAndForce, float upForce){ //transform.r,l,back,f
-        Debug.Log("hit van called");
+        //Debug.Log("hit van called");
         carDrive.rb.drag = 0.0f;
         carDrive.rb.angularDrag = 0.0f;
         carDrive.rb.freezeRotation = false;
@@ -55,7 +55,8 @@ public class EnemyDrive : MonoBehaviour
         if(this.enabled == false){
             return;
         }
-        if(LayerMask.LayerToName(coll.collider.gameObject.layer) == "Player"){
+        if(LayerMask.LayerToName(coll.gameObject.layer) == "Player"){
+            // Debug.Log("I've been bumped! " + gameObject.name + " by " + coll.gameObject.name);
             //Destroy(gameObject);
             Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
             float angle = Mathf.Atan2(relativeHitPt.x, relativeHitPt.z) * Mathf.Rad2Deg;
@@ -68,16 +69,16 @@ public class EnemyDrive : MonoBehaviour
             //even if they are working
             float frontBackAngRange = 40.0f; 
             if(Mathf.Abs(angle) < frontBackAngRange/2){
-                Debug.Log("hit from front");
+                //Debug.Log("hit from front");
                 hitVan(transform.forward * -500.0f, transform.right * 3000.0f, 500.0f);
             } else if (angle > 0.0f && angle < 180.0f - frontBackAngRange/2) {
-                Debug.Log("hit from right");
+                //Debug.Log("hit from right");
                 hitVan(transform.right * -500.0f, transform.forward * 3000.0f, 500.0f);
             } else if (angle < 0.0f && angle > -180.0f + frontBackAngRange/2) {
-                Debug.Log("hit from left");
+                //Debug.Log("hit from left");
                 hitVan(transform.right * 500.0f, transform.forward * -6000.0f, 500.0f);
             } else {
-                Debug.Log("hit from back");
+                //Debug.Log("hit from back");
                 hitVan(transform.forward * 500.0f, transform.right * -3000.0f, 500.0f);
             }
         }
