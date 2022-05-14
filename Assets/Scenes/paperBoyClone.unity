@@ -3181,7 +3181,7 @@ RectTransform:
   m_Children:
   - {fileID: 1921125903}
   m_Father: {fileID: 1058234911}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8377,7 +8377,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058234911}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -10399,7 +10399,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058234911}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14984,7 +14984,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -6.3586464
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2226773773918682791, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
 --- !u!23 &2532075319444948480
 MeshRenderer:
