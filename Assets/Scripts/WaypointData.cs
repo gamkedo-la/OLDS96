@@ -8,7 +8,7 @@ public class WaypointData : MonoBehaviour
     public void OnDrawGizmos(){
         if(next){
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, next.transform.position); //draw red line to next waypoint (in editor)
+            //Gizmos.DrawLine(transform.position, next.transform.position); //draw red line to next waypoint (in editor)
         }
     }
 }
