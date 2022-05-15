@@ -17,8 +17,10 @@ public class PlayerDrive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(carDrive.currentVelocity > 5){
-            transform.Rotate(Vector3.up, carDrive.turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
+        Vector3 forwardRelative = transform.InverseTransformVector(carDrive.rb.velocity);
+        if (Mathf.Abs(forwardRelative.z) > 2.0f){
+            transform.Rotate(Vector3.up, (forwardRelative.z > 0.0f ? 1.0f : -1.0f) *
+                carDrive.turnRate * Time.deltaTime * Input.GetAxisRaw("Horizontal"));
         }
         
         speedmeterarmscript.ShowSpeed(carDrive.rb.velocity.magnitude,0,100);
@@ -54,9 +56,15 @@ public class PlayerDrive : MonoBehaviour
         {
             carDrive.rb.velocity = carDrive.rb.velocity*carDrive.driftPercent + (1.0f - carDrive.driftPercent) * flatForward * carDrive.currentVelocity; //vel ALREADY takes place over time
         }
-        else if((Input.GetAxisRaw("Vertical") < 0.0f)) //brake
+        else if(Input.GetAxisRaw("Vertical") < 0.0f) //brake
         {
-            carDrive.rb.velocity = carDrive.rb.velocity * carDrive.brakeDecayPercent;
+            Vector3 forwardRelative = transform.InverseTransformVector(carDrive.rb.velocity);
+            if (forwardRelative.z > 0.1) { // any forward speed? decelerate
+                carDrive.rb.velocity = carDrive.rb.velocity * carDrive.brakeDecayPercent;
+            } else { // virtually no forward speed? throw it into weak reverse
+                carDrive.rb.velocity = carDrive.rb.velocity * carDrive.driftPercent + 
+                                (1.0f - carDrive.driftPercent) * flatForward * -3.0f;
+            }
         }
         // if above conditions aren't met, the vehicle will decelerate
 
