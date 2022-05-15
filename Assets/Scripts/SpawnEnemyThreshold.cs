@@ -18,12 +18,12 @@ public class SpawnEnemyThreshold : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider.gameObject.tag);
 
         if(isTriggered){
             return;
         }
         if(collider.gameObject.tag == "Player"){
+            Debug.Log(collider.gameObject.name + " triggered " +gameObject.name);
             enemySpawnScript.SpawnEnemy(); 
             isTriggered = true;   
         }
