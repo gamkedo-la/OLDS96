@@ -2493,11 +2493,15 @@ MonoBehaviour:
     and box models
 
 
-    Christer "McFunkypants" Kaitila: Main menu
+    Christer "McFunkypants" Kaitila: Main menu functionality
 
 
-    Developed
-    by members in HomeTeamGameDev.com Lighthouse Group'
+    Chris
+    DeLeon: Reverse, fog, menu decoration
+
+
+    Developed by members in HomeTeamGameDev.com
+    Lighthouse Group'
 --- !u!222 &2027703374
 CanvasRenderer:
   m_ObjectHideFlags: 0
