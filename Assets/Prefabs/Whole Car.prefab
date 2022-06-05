@@ -732,6 +732,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: van
       objectReference: {fileID: 0}
+    - target: {fileID: 1586400206813875911, guid: 52905e296cb834797817e78211de45e3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586400206813875911, guid: 52905e296cb834797817e78211de45e3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586400206813875911, guid: 52905e296cb834797817e78211de45e3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586400206813875911, guid: 52905e296cb834797817e78211de45e3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586400206813875911, guid: 52905e296cb834797817e78211de45e3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586400206813875911, guid: 52905e296cb834797817e78211de45e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064182114252297084, guid: 52905e296cb834797817e78211de45e3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: c2d484013eaf8e1468716526b71f44ab, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52905e296cb834797817e78211de45e3, type: 3}
 --- !u!4 &171558724376529533 stripped
