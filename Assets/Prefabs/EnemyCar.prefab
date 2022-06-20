@@ -71,6 +71,7 @@ MonoBehaviour:
   enemyCamera: {fileID: 0}
   wayPointSpawnedAt: {fileID: 0}
   nextWayPoint: {fileID: 0}
+  pfxBurst: {fileID: 7105143564179327395, guid: da2ef5efa1f674657985d22c27163a75, type: 3}
 --- !u!114 &1301554659367251000
 MonoBehaviour:
   m_ObjectHideFlags: 0

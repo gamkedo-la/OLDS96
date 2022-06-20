@@ -17,6 +17,8 @@ public class EnemyDrive : MonoBehaviour
     public GameObject wayPointSpawnedAt;
     public Transform nextWayPoint;
 
+    public GameObject pfxBurst;
+
     //private Transform currentWayPoint = wayPoint; ask Chris why this throws an error
     private Transform currentWayPoint;
 
@@ -56,6 +58,7 @@ public class EnemyDrive : MonoBehaviour
             return;
         }
         if(LayerMask.LayerToName(coll.gameObject.layer) == "Player"){
+            GameObject.Instantiate(pfxBurst, transform.position, Quaternion.identity); //need to change the spawn point
             // Debug.Log("I've been bumped! " + gameObject.name + " by " + coll.gameObject.name);
             //Destroy(gameObject);
             Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
