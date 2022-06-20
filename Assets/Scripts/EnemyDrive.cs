@@ -58,6 +58,11 @@ public class EnemyDrive : MonoBehaviour
             return;
         }
         if(LayerMask.LayerToName(coll.gameObject.layer) == "Player"){
+            /* i think this is a valid check
+            if(pfxBurst){
+                Debug.Log("pfxburst exists");
+            }
+            */ 
             GameObject.Instantiate(pfxBurst, transform.position, Quaternion.identity); //need to change the spawn point
             // Debug.Log("I've been bumped! " + gameObject.name + " by " + coll.gameObject.name);
             //Destroy(gameObject);
@@ -213,6 +218,10 @@ public class EnemyDrive : MonoBehaviour
     }
 
     void FixedUpdate(){
+
+        pfxBurst.transform.position = transform.position;
+        //Debug.Log(pfxBurst.transform.position);
+        Debug.Log(transform.position);
 
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;   
