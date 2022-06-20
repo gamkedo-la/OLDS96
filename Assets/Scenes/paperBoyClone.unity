@@ -8580,6 +8580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyCar
       objectReference: {fileID: 0}
+    - target: {fileID: 1301554659367251002, guid: 1778ab3def3dc48ccab020ae0621fbf9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1778ab3def3dc48ccab020ae0621fbf9, type: 3}
 --- !u!1001 &1429663562
