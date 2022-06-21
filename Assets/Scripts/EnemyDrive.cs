@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyDrive : MonoBehaviour
 {
 
+    private int collisionCount = 0;
+    //private bool hasCollided = false;
     //remove below once you learn how to reference the CameraSwitch script
     public Camera mainCamera;
     public Camera enemyCamera;
@@ -49,7 +51,8 @@ public class EnemyDrive : MonoBehaviour
         carDrive.rb.freezeRotation = false;
         carDrive.rb.AddForce(hitDirectionAndForce + (Vector3.up * upForce));
         carDrive.rb.angularVelocity = spinDirectionAndForce; //in radians
-        this.enabled = false; //disables script
+        this.enabled = false; //disables script - remember this is connected to a return-kill block at the top of the collision code, it's a two parter
+        //hasCollided = true;
         Destroy(gameObject, 3.0f);
     }
 
@@ -57,13 +60,21 @@ public class EnemyDrive : MonoBehaviour
         if(this.enabled == false){
             return;
         }
+        /*
+        if(hasCollided == true){
+            return;
+        }
+        */
         if(LayerMask.LayerToName(coll.gameObject.layer) == "Player"){
+            //collisionCount += 1;
+            //Debug.Log(collisionCount);
             /* i think this is a valid check
             if(pfxBurst){
                 Debug.Log("pfxburst exists");
             }
             */ 
-            GameObject.Instantiate(pfxBurst, transform.position, Quaternion.identity); //need to change the spawn point
+            //GameObject.Instantiate(pfxBurst, transform.position, Quaternion.identity); //need to change the spawn point
+            GameObject.Instantiate(pfxBurst, transform.position, Quaternion.identity, transform);
             // Debug.Log("I've been bumped! " + gameObject.name + " by " + coll.gameObject.name);
             //Destroy(gameObject);
             Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
@@ -89,6 +100,7 @@ public class EnemyDrive : MonoBehaviour
                 //Debug.Log("hit from back");
                 hitVan(transform.forward * 500.0f, transform.right * -3000.0f, 500.0f);
             }
+            //hasCollided = true;
         }
     }
 
@@ -221,7 +233,7 @@ public class EnemyDrive : MonoBehaviour
 
         pfxBurst.transform.position = transform.position;
         //Debug.Log(pfxBurst.transform.position);
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
 
         Vector3 flatForward = transform.forward;
         flatForward.y = 0.0f;   
