@@ -5,9 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(CarDrive))] //tells script it requires CarDrive
 public class EnemyDrive : MonoBehaviour
 {
-
-    private int collisionCount = 0;
-    //private bool hasCollided = false;
     //remove below once you learn how to reference the CameraSwitch script
     public Camera mainCamera;
     public Camera enemyCamera;
@@ -52,7 +49,6 @@ public class EnemyDrive : MonoBehaviour
         carDrive.rb.AddForce(hitDirectionAndForce + (Vector3.up * upForce));
         carDrive.rb.angularVelocity = spinDirectionAndForce; //in radians
         this.enabled = false; //disables script - remember this is connected to a return-kill block at the top of the collision code, it's a two parter
-        //hasCollided = true;
         Destroy(gameObject, 3.0f);
     }
 
@@ -66,14 +62,7 @@ public class EnemyDrive : MonoBehaviour
         }
         */
         if(LayerMask.LayerToName(coll.gameObject.layer) == "Player"){
-            //collisionCount += 1;
-            //Debug.Log(collisionCount);
-            /* i think this is a valid check
-            if(pfxBurst){
-                Debug.Log("pfxburst exists");
-            }
-            */ 
-            //GameObject.Instantiate(pfxBurst, transform.position, Quaternion.identity); //need to change the spawn point
+            
             GameObject.Instantiate(pfxBurst, transform.position, Quaternion.identity, transform);
             // Debug.Log("I've been bumped! " + gameObject.name + " by " + coll.gameObject.name);
             //Destroy(gameObject);
