@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(CarDrive))] //tells script it requires CarDrive
 public class EnemyDrive : MonoBehaviour
 {
+
     //remove below once you learn how to reference the CameraSwitch script
     public Camera mainCamera;
     public Camera enemyCamera;
-
 
     private CarDrive carDrive;
 
@@ -69,6 +69,8 @@ public class EnemyDrive : MonoBehaviour
             Vector3 relativeHitPt = transform.InverseTransformPoint(coll.contacts[0].point); //makes it relative to the point hit
             float angle = Mathf.Atan2(relativeHitPt.x, relativeHitPt.z) * Mathf.Rad2Deg;
             //Debug.Log(coll.collider.gameObject.name + " " + angle);
+            Rigidbody rb = coll.collider.gameObject.GetComponentInParent<Rigidbody>();
+            Vector3 colliderVelocity = rb.velocity * 2.0f;
             //note about tuning ranges: think about placing the van on a clock, the more "hours" a side occupies, the bigger it's range
             //this is why (at the time of oo) front/back is 20.0 and the sides are 160.0, adds up to 180, but the sides are way bigger
 
@@ -76,18 +78,19 @@ public class EnemyDrive : MonoBehaviour
             //when you implement addForce or addForcePosition, use a BIG multiplier, the physics units are tiny and might not show visible change
             //even if they are working
             float frontBackAngRange = 40.0f; 
+
             if(Mathf.Abs(angle) < frontBackAngRange/2){
                 //Debug.Log("hit from front");
-                hitVan(transform.forward * -500.0f, transform.right * 3000.0f, 500.0f);
+                hitVan(transform.forward * -500.0f + colliderVelocity, transform.right * 3000.0f, 500.0f);
             } else if (angle > 0.0f && angle < 180.0f - frontBackAngRange/2) {
                 //Debug.Log("hit from right");
-                hitVan(transform.right * -500.0f, transform.forward * 3000.0f, 500.0f);
+                hitVan(transform.right * -500.0f + colliderVelocity, transform.forward * 3000.0f, 500.0f);
             } else if (angle < 0.0f && angle > -180.0f + frontBackAngRange/2) {
                 //Debug.Log("hit from left");
-                hitVan(transform.right * 500.0f, transform.forward * -6000.0f, 500.0f);
+                hitVan(transform.right * 500.0f + colliderVelocity, transform.forward * -6000.0f, 500.0f);
             } else {
                 //Debug.Log("hit from back");
-                hitVan(transform.forward * 500.0f, transform.right * -3000.0f, 500.0f);
+                hitVan(transform.forward * 500.0f + colliderVelocity, transform.right * -3000.0f, 500.0f);
             }
             //hasCollided = true;
         }
