@@ -21800,12 +21800,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 552407517, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 552407517, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 552407517, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 903.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 552407517, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -64
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740595777, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_IsActive
@@ -21839,6 +21847,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1598432090, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.314209
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598432090, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -11.928528
+      objectReference: {fileID: 0}
     - target: {fileID: 1598432091, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_Texture
       value: 
@@ -21857,7 +21873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_Pivot.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -21865,7 +21881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_AnchorMin.x
@@ -21873,7 +21889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_SizeDelta.x
@@ -21881,27 +21897,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 704
+      value: 565
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -454.45422
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921125903, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -158.176
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921125904, guid: 442648195299445ed9bd7909d2d68d3d, type: 3}
       propertyPath: m_Enabled
