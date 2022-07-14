@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6690626, g: 0.4260401, b: 0.20367742, a: 1}
+  m_IndirectSpecularColor: {r: 0.66906476, g: 0.4260416, b: 0.20367803, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2548,36 +2548,41 @@ MonoBehaviour:
 
 
     Ashleigh M.: Project lead, core gameplay, track design,
-    player van model, enemy driver AI, arcadey collision physics, checkpoints, control
-    tuning, road sign, main guard rail, assorted bug fixing
+    initial van model, enemy driver AI, arcadey collision physics, checkpoints, control
+    tuning, road sign, main guard rail, assorted bug fixing, crash particles, responsive
+    UI layout
 
 
-    Raik Gunnar Bradley:
-    Scene decoration, finish line, end game screen, speedometer, road lines, signs,
-    grass, car update, additional level design
+    Raik Gunnar Bradley: Scene decoration, finish line, end game
+    screen, initial speedometer, road lines, signs, grass, car update, additional
+    level design
 
 
-    Patrick Moffett: Sedan, pine
-    tree, water barrel, additional guard rail
+    Patrick Moffett: Sedan, pine tree, water barrel, additional
+    guard rail
 
 
-    Michael Monty Tanner: Camera
-    zoom based on speed, pause feature
+    Rohit "n4rwal" Kumar: Player van model (final), speedometer
+    graphic (final)
 
 
-    Rodrigo Bonzerr Lopez: Traffic cone
-    and box models
+    Michael Monty Tanner: Camera zoom based on speed, pause
+    feature
 
 
-    Christer "McFunkypants" Kaitila: Main menu functionality
+    Rodrigo Bonzerr Lopez: Traffic cone and cardboard box models
 
 
-    Chris
-    DeLeon: Reverse, fog, menu decoration
+    Christer
+    "McFunkypants" Kaitila: Main menu functionality
 
 
-    Developed by members in HomeTeamGameDev.com
-    Lighthouse Group'
+    Chris DeLeon: Reverse,
+    fog, menu decoration
+
+
+    Developed by members in HomeTeamGameDev.com Lighthouse
+    Group'
 --- !u!222 &2027703374
 CanvasRenderer:
   m_ObjectHideFlags: 0
